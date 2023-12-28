@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+
+        .main {
+            width: 100%;
+            height: 100vh;
+            border: 1px solid;
+            justify-content: center;
+            display: flex;
+            align-items: center;
+        }
+
+        .group {
+            padding: 10px 10px;
+            width: 50%;
+        }
+
+        #email-Fi {
+            width: 100%;
+            padding: 10px 0px;
+            border: none;
+            font-size: 20px;
+            outline: none;
+            border-bottom: 2px solid #777;
+            transition: .5;
+        }
+
+        #error-Fi {
+            font-size: 12px;
+            color: red;
+            transition: .5s ;
+            display: block;
+        }
+        #lable-Fi{
+            position: absolute;
+            padding: 15px 0;
+            color: #777;
+            transition: .5s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="group">
+            <label id="lable-Fi">Email</label>
+            <input type="email" id="email-Fi" spellcheck="false"  onkeyup="validate()">
+            <span id="error-Fi"></span>
+        </div>
+    </div>
+
+    <script>
+        var emailFi = document.getElementById("email-Fi");
+        var errorFi = document.getElementById("error-Fi");
+        var labelFi = document.getElementById("lable-Fi");
+
+        function validate(){
+
+            labelFi.style.marginTop="-25px";
+
+            if(!emailFi.value.match(/^[A-Za-z\._\-0-9]*[@][A-Za-z]*[\.][a-z]{2,4}$/)){
+                errorFi.innerHTML="Please Enter A Valid Email";
+                errorFi.style.color="red";
+                emailFi.style.borderBottomColor="red";
+                return false;
+            }
+            else{
+            errorFi.innerHTML="Your Email Is Correct";
+            emailFi.style.borderBottomColor="green";
+            errorFi.style.color="green";
+            return true;
+        }
+        }
+    </script>
+</body>
+
+</html>
